@@ -15,38 +15,9 @@ const uiConfig = {
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
   ],
-  // callbacks: {
-  //   // Avoid redirects after sign-in.
-  //   signInSuccessWithAuthResult: (result) => {
-  //     // Do not redirect
-  //     return false
-  //   },
-  // },
 }
 
 const CustomLoginPage = (props) => {
-  // useEffect(() => {
-  //   return firebase.auth().onAuthStateChanged(async (user) => {
-  //     if (user) {
-  //       const token = await user.getIdToken()
-  //       const idTokenResult = await user.getIdTokenResult()
-  //       const hasuraClaim = idTokenResult.claims['https://hasura.io/jwt/claims']
-
-  //       if (hasuraClaim) {
-  //         localStorage.setItem('jwtToken', token)
-  //         console.log('token saved')
-  //         window.location.href = window.location.origin
-  //       } else {
-  //         console.log('no claims')
-  //         alert(
-  //           'Thank you for registering an account, please contact the administrator to give your permission to access the app',
-  //         )
-  //       }
-  //     } else {
-  //       console.log('no user')
-  //     }
-  //   })
-  // }, [])
   return (
     <Login {...props}>
       <h1
