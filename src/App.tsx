@@ -1,5 +1,4 @@
 import CategoryIcon from '@material-ui/icons/Book'
-// import hasuraDataProvider from 'ra-data-hasura'
 
 import React from 'react'
 import {Admin, Resource} from 'react-admin'
@@ -27,15 +26,6 @@ import {
   QuestionTranslationList,
 } from './modules/questionTranslations'
 import LoginPage from './components/LoginPage'
-
-
-
-const hasuraConfig = {
-  primaryKey: {
-    locales: 'code',
-    statuses: 'name',
-  },
-}
 
 type AppProps = {
   dataProvider: Function,

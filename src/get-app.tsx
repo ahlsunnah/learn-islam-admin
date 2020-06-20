@@ -4,8 +4,6 @@ import buildHasuraProvider from 'ra-data-hasura-graphql';
 import {FirebaseAuthProvider} from 'react-admin-firebase';
 import ApolloClient from 'apollo-boost';
 
-const uri = "https://low-code-api.herokuapp.com/v1/graphql";
-
 const {
   REACT_APP_API,
   REACT_APP_API_SECRET,
