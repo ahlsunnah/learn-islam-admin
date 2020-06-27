@@ -5,11 +5,6 @@ import {
   Edit,
   EditButton,
   List,
-  NumberField,
-  NumberInput,
-  ReferenceField,
-  ReferenceInput,
-  SelectInput,
   SimpleForm,
   TextField,
   TextInput,
@@ -20,14 +15,9 @@ export const QuestionList = (props) => (
   <List {...props}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
-      <TextField source="status" />
-      <ReferenceField source="category_id" reference="categories">
-        <TextField source="name" />
-      </ReferenceField>
-      <NumberField source="num" />
-      <TextField source="text" />
-      <TextField source="img" />
-      <TextField source="audio" />
+      <TextField source="level" />
+      <TextField source="question" />
+      <TextField source="is_active" />
       <EditButton />
     </Datagrid>
   </List>
@@ -38,16 +28,10 @@ export const QuestionForm = (props) => {
   return (
     <SimpleForm {...props}>
       {id && <TextInput source="id" disabled />}
-      <ReferenceInput source="status" reference="statuses">
-        <SelectInput optionText="name" defaultValue="DRAFT" />
-      </ReferenceInput>
-      <ReferenceInput source="category_id" reference="categories">
-        <SelectInput optionText="name" />
-      </ReferenceInput>
-      <TextInput source="text" />
-      <TextInput source="img" />
-      <NumberInput source="num" />
-      <TextInput source="audio" />
+      <TextInput source="type" />
+      <TextInput source="level" />
+      <TextInput source="question" />
+      <TextInput source="is_active" />
     </SimpleForm>
   )
 }
