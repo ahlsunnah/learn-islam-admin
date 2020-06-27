@@ -11,8 +11,10 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "apollo-boost": "^0.4.9",
+    "apollo-link-context": "^1.0.20",
     "firebase": "^7.14.1",
     "graphql": "^15.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.7.2",
     "ra-data-hasura-graphql": "^0.1.10",
     "react": "^16.13.1",
@@ -45,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.35"
   }
 }

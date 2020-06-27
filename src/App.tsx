@@ -28,7 +28,7 @@ import {
 import LoginPage from './components/LoginPage'
 
 type AppProps = {
-  dataProvider: Function,
+  dataProvider: Function
   authProvider: Object
 }
 function App(props: AppProps) {
@@ -38,50 +38,7 @@ function App(props: AppProps) {
       dataProvider={props.dataProvider}
       authProvider={props.authProvider}
     >
-      <Resource
-        name="categories"
-        icon={CategoryIcon}
-        list={CategoryList}
-        edit={CategoryEdit}
-        create={CategoryCreate}
-      />
-      <Resource
-        name="category_translations"
-        list={CategoryTranslationList}
-        edit={CategoryTranslationEdit}
-        create={CategoryTranslationCreate}
-      />
-      <Resource
-        name="questions"
-        list={QuestionList}
-        edit={QuestionEdit}
-        create={QuestionCreate}
-      />
-      <Resource
-        name="question_translations"
-        list={QuestionTranslationList}
-        edit={QuestionTranslationEdit}
-        create={QuestionTranslationCreate}
-      />
-      <Resource
-        name="invocations"
-        list={InvocationList}
-        edit={InvocationEdit}
-        create={InvocationCreate}
-      />
-      <Resource
-        name="invocation_translations"
-        list={InvocationTranslationList}
-        edit={InvocationTranslationEdit}
-        create={InvocationTranslationCreate}
-      />
-      <Resource
-        name="locales"
-        list={LocaleList}
-        edit={LocaleEdit}
-        create={LocaleCreate}
-      />
-      <Resource name="statuses" />
+      <div className="lol">Hello</div>
     </Admin>
   )
 }
