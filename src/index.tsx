@@ -9,7 +9,6 @@ import App from './App'
 
 const {
   REACT_APP_HASURA_ENDPOINT,
-  REACT_APP_FIREBASE_CONFIG,
   REACT_APP_apiKey,
   REACT_APP_authDomain,
   REACT_APP_databaseURL,
@@ -22,10 +21,6 @@ const {
 
 if (!REACT_APP_HASURA_ENDPOINT) {
   throw new Error('Missing Hasura endpoint env var')
-}
-
-if (!REACT_APP_FIREBASE_CONFIG) {
-  throw new Error('We need REACT_APP_FIREBASE_CONFIG set')
 }
 
 const firebaseConfig = {
