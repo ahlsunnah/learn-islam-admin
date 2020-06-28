@@ -2,9 +2,10 @@ import React from 'react'
 import './index.css'
 import * as serviceWorker from './serviceWorker'
 import ReactDOM from 'react-dom'
-import buildHasuraProvider from 'ra-data-hasura-graphql'
+import axios from 'axios'
+import {fetchUtils} from 'react-admin'
+import buildHasuraProvider from 'ra-data-hasura'
 import {FirebaseAuthProvider} from 'react-admin-firebase'
-import useApolloClien from './hooks/apollo'
 import App from './App'
 
 const {
@@ -17,6 +18,7 @@ const {
   REACT_APP_messagingSenderId,
   REACT_APP_apiId,
   REACT_APP_measurementId,
+  REACT_APP_AUTH_API,
 } = process.env
 
 if (!REACT_APP_HASURA_ENDPOINT) {
@@ -42,11 +44,33 @@ const firebaseOptions = {
 
 const authProvider = FirebaseAuthProvider(firebaseConfig, firebaseOptions)
 
-const AppContainer = () => {
-  const client = useApolloClien()
-  const dataProvider = buildHasuraProvider({client})
+const httpClient = async (url: string, options: any = {}) => {
+  const jwt = await authProvider.getJWTToken()
 
-  return <App authProvider={authProvider} dataProvider={dataProvider} />
+  if (!options.headers) {
+    options.headers = new Headers({Accept: 'application/json'})
+  }
+
+  const token = await axios.post<string>(
+    `${REACT_APP_AUTH_API}/auth/token`,
+    {email: ''},
+    {
+      headers: {Authorization: `Bearer ${jwt}`},
+    },
+  )
+
+  options.headers.set('x-hasura-admin-secret', token.data)
+
+  return fetchUtils.fetchJson(url, options)
+}
+
+const AppContainer = () => {
+  return (
+    <App
+      authProvider={authProvider}
+      dataProvider={buildHasuraProvider(REACT_APP_HASURA_ENDPOINT, httpClient)}
+    />
+  )
 }
 
 ReactDOM.render(
@@ -55,6 +79,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 )
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
