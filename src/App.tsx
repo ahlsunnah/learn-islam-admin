@@ -1,36 +1,12 @@
-import CategoryIcon from '@material-ui/icons/Book'
-
 import React from 'react'
-import {Admin, Resource} from 'react-admin'
-import {CategoryCreate, CategoryEdit, CategoryList} from './modules/categories'
-import {
-  CategoryTranslationCreate,
-  CategoryTranslationEdit,
-  CategoryTranslationList,
-} from './modules/categoryTranslations'
-import {
-  InvocationCreate,
-  InvocationEdit,
-  InvocationList,
-} from './modules/invocations'
-import {
-  InvocationTranslationCreate,
-  InvocationTranslationEdit,
-  InvocationTranslationList,
-} from './modules/invocationTranslations'
-import {LocaleCreate, LocaleEdit, LocaleList} from './modules/locales'
-import {QuestionCreate, QuestionEdit, QuestionList} from './modules/questions'
-import {
-  QuestionTranslationCreate,
-  QuestionTranslationEdit,
-  QuestionTranslationList,
-} from './modules/questionTranslations'
+import {Admin, Resource, ListGuesser} from 'react-admin'
 import LoginPage from './components/LoginPage'
 
 type AppProps = {
-  dataProvider: Function
+  dataProvider: Function | null
   authProvider: Object
 }
+
 function App(props: AppProps) {
   return (
     <Admin
@@ -38,7 +14,12 @@ function App(props: AppProps) {
       dataProvider={props.dataProvider}
       authProvider={props.authProvider}
     >
-      <div className="lol">Hello</div>
+      <Resource name="chapters" list={ListGuesser} />
+      <Resource name="users" list={ListGuesser} />
+      <Resource name="books" list={ListGuesser} />
+      <Resource name="courses" list={ListGuesser} />
+      <Resource name="courses" list={ListGuesser} />
+      <Resource name="questions" list={ListGuesser} />
     </Admin>
   )
 }
