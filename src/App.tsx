@@ -1,6 +1,15 @@
 import React from 'react'
-import {Admin, Resource, ListGuesser} from 'react-admin'
+import {Admin, Resource, ListGuesser, EditGuesser} from 'react-admin'
 import LoginPage from './components/LoginPage'
+import {
+  CreateQuestions,
+  QuestionsList,
+  QuestionsShow,
+} from './modules/questions'
+import {
+  CreateQuestionChoice,
+  QuestionChoicesShow,
+} from './modules/questionChoices'
 
 type AppProps = {
   dataProvider: Function | null
@@ -14,12 +23,23 @@ function App(props: AppProps) {
       dataProvider={props.dataProvider}
       authProvider={props.authProvider}
     >
-      <Resource name="chapters" list={ListGuesser} />
-      <Resource name="users" list={ListGuesser} />
-      <Resource name="books" list={ListGuesser} />
-      <Resource name="courses" list={ListGuesser} />
-      <Resource name="courses" list={ListGuesser} />
-      <Resource name="questions" list={ListGuesser} />
+      <Resource name="users" list={ListGuesser} edit={EditGuesser} />
+      <Resource
+        name="question_choices"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={QuestionChoicesShow}
+        create={CreateQuestionChoice}
+      />
+      <Resource name="books" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="courses" list={ListGuesser} edit={EditGuesser} />
+      <Resource
+        name="questions"
+        list={QuestionsList}
+        edit={EditGuesser}
+        create={CreateQuestions}
+        show={QuestionsShow}
+      />
     </Admin>
   )
 }
