@@ -4,6 +4,7 @@ import {
   SimpleList,
   TextInput,
   Create,
+  Edit,
   BooleanInput,
   List,
   Responsive,
@@ -36,6 +37,14 @@ export const CreateTracks = (props) => {
     <Create {...props}>
       <TracksForm />
     </Create>
+  )
+}
+
+export const EditTracks = (props) => {
+  return (
+    <Edit {...props}>
+      <TracksForm />
+    </Edit>
   )
 }
 

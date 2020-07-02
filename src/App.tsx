@@ -9,6 +9,7 @@ import {
 import {
   TracksShow,
   TracksList,
+  EditTracks,
   CreateTracks
 } from './modules/tracks'
 import {
@@ -48,7 +49,7 @@ function App(props: AppProps) {
       <Resource
         name="tracks"
         list={TracksList}
-        edit={EditGuesser}
+        edit={EditTracks}
         create={CreateTracks}
         show={TracksShow}
       />
