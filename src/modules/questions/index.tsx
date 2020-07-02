@@ -58,7 +58,7 @@ const QuestionsForm = (props) => {
     <SimpleForm {...props}>
       {id && <TextInput source="id" disabled />}
       <TextInput source="question" />
-      <BooleanInput source="is_active" />
+      <BooleanInput source="is_active" defaultValue={true} />
       <TextInput source="type" />
       <ReferenceInput source="course_id" reference="courses">
         <SelectInput optionText="slug" />
