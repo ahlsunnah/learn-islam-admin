@@ -33,6 +33,7 @@ function App(props: AppProps) {
       />
       <Resource name="books" list={ListGuesser} edit={EditGuesser} />
       <Resource name="courses" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="chapters" list={ListGuesser} edit={EditGuesser} />
       <Resource
         name="questions"
         list={QuestionsList}

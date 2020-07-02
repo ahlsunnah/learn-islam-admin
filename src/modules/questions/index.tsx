@@ -60,7 +60,7 @@ const QuestionsForm = (props) => {
       <TextInput source="question" />
       <BooleanInput source="is_active" />
       <TextInput source="type" />
-      <ReferenceInput source="course_id" reference="courses">
+      <ReferenceInput source="chapter_id" reference="chapters">
         <SelectInput optionText="slug" />
       </ReferenceInput>
     </SimpleForm>
