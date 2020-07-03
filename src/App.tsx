@@ -7,6 +7,12 @@ import {
   QuestionsShow,
 } from './modules/questions'
 import {
+  TracksShow,
+  TracksList,
+  EditTracks,
+  CreateTracks
+} from './modules/tracks'
+import {
   CreateQuestionChoice,
   QuestionChoicesShow,
 } from './modules/questionChoices'
@@ -39,6 +45,13 @@ function App(props: AppProps) {
         edit={EditGuesser}
         create={CreateQuestions}
         show={QuestionsShow}
+      />
+      <Resource
+        name="tracks"
+        list={TracksList}
+        edit={EditTracks}
+        create={CreateTracks}
+        show={TracksShow}
       />
     </Admin>
   )
