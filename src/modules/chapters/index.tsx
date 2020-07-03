@@ -5,50 +5,54 @@ import {
   TextInput,
   Create,
   Edit,
-  BooleanInput,
+  SelectInput,
+  ReferenceInput,
   List,
   Responsive,
   Datagrid,
   ShowButton,
   TextField,
+  ReferenceField,
   Show,
   TabbedShowLayout,
   Tab,
-  ReferenceManyField,
 } from 'react-admin'
 
-// tracks: id, order, slug, soon
-// track_translations: id, track_id, description, description, locale_code
+// chapters: id, course_id, audio, duration, order, slug
 
-const TracksForm = (props) => {
+const ChaptersForm = (props) => {
   const id = props.record.id
   return (
     <SimpleForm {...props}>
       {id && <TextInput source="id" disabled />}
+      <ReferenceInput source="course_id" reference="courses">
+        <SelectInput optionText="slug" />
+      </ReferenceInput>
+      <TextInput source="audio" />
+      <TextInput source="duration" />
       <TextInput source="order" />
       <TextInput source="slug" />
-      <BooleanInput source="soon" />
     </SimpleForm>
   )
 }
 
-export const CreateTracks = (props) => {
+export const CreateChapters = (props) => {
   return (
     <Create {...props}>
-      <TracksForm />
+      <ChaptersForm />
     </Create>
   )
 }
 
-export const EditTracks = (props) => {
+export const EditChapters = (props) => {
   return (
     <Edit {...props}>
-      <TracksForm />
+      <ChaptersForm />
     </Edit>
   )
 }
 
-export const TracksList = (props) => {
+export const ChaptersList = (props) => {
   return (
     <List {...props}>
       <Responsive
@@ -58,9 +62,13 @@ export const TracksList = (props) => {
         medium={
           <Datagrid>
             <TextField source="id" />
+            <ReferenceField source="course_id" reference="courses">
+              <TextField source="slug" />
+            </ReferenceField>
+            <TextField source="audio" />
+            <TextField source="duration" />
             <TextField source="order" />
             <TextField source="slug" />
-            <TextField source="soon" />
             <ShowButton />
           </Datagrid>
         }
@@ -69,28 +77,18 @@ export const TracksList = (props) => {
   )
 }
 
-export const TracksShow = (props) => (
+export const ChaptersShow = (props) => (
   <Show {...props}>
     <TabbedShowLayout>
-      <Tab label="Track">
+      <Tab label="Chapter">
         <TextField source="id" />
+        <ReferenceField source="course_id" reference="courses">
+          <TextField source="slug" />
+        </ReferenceField>
+        <TextField source="audio" />
+        <TextField source="duration" />
         <TextField source="order" />
         <TextField source="slug" />
-        <TextField source="soon" />
-      </Tab>
-      <Tab label="Courses" path="courses">
-        <ReferenceManyField
-          addLabel={false}
-          reference="courses"
-          target="track_id"
-        >
-          <Datagrid>
-            <TextField source="id" />
-            <TextField source="level" />
-            <TextField source="order" />
-            <TextField source="slug" />
-          </Datagrid>
-        </ReferenceManyField>
       </Tab>
     </TabbedShowLayout>
   </Show>
