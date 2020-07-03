@@ -13,6 +13,12 @@ import {
   CreateTracks
 } from './modules/tracks'
 import {
+  ChaptersShow,
+  ChaptersList,
+  EditChapters,
+  CreateChapters
+} from './modules/chapters'
+import {
   CreateQuestionChoice,
   QuestionChoicesShow,
 } from './modules/questionChoices'
@@ -52,6 +58,13 @@ function App(props: AppProps) {
         edit={EditTracks}
         create={CreateTracks}
         show={TracksShow}
+      />
+      <Resource
+        name="chapters"
+        list={ChaptersList}
+        edit={EditChapters}
+        create={CreateChapters}
+        show={ChaptersShow}
       />
     </Admin>
   )
