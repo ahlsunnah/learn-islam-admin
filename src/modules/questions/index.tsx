@@ -18,6 +18,7 @@ import {
   Tab,
   BooleanField,
   EditButton,
+  ReferenceField,
   ReferenceManyField,
   Button,
 } from 'react-admin'
@@ -59,8 +60,14 @@ const QuestionsForm = (props) => {
       {id && <TextInput source="id" disabled />}
       <TextInput source="question" />
       <BooleanInput source="is_active" defaultValue={true} />
-      <TextInput source="type" />
       <ReferenceInput source="course_id" reference="courses">
+        <SelectInput optionText="slug" />
+      </ReferenceInput>
+      <ReferenceInput
+        label="question_type"
+        source="question_type_id"
+        reference="question_types"
+      >
         <SelectInput optionText="slug" />
       </ReferenceInput>
     </SimpleForm>
@@ -95,7 +102,8 @@ export const QuestionsList = (props) => {
             <TextField source="id" />
             <TextField source="question" />
             <TextField source="is_active" />
-            <TextField source="type" />
+            <TextField source="question_type_id" />
+            <TextField source="course_id" />
             <ShowButton />
           </Datagrid>
         }
@@ -111,7 +119,13 @@ export const QuestionsShow = (props) => (
         <TextField source="id" />
         <TextField source="question" />
         <TextField source="is_active" />
-        <TextField source="type" />
+        <ReferenceField
+          label="question type"
+          source="question_type_id"
+          reference="question_types"
+        >
+          <TextField source="slug" />
+        </ReferenceField>
       </Tab>
       <Tab label="Question choices" path="choices">
         <ReferenceManyField
