@@ -5,12 +5,13 @@ import {
   CreateQuestions,
   QuestionsList,
   QuestionsShow,
+  EditQuestions,
 } from './modules/questions'
 import {
   TracksShow,
   TracksList,
   EditTracks,
-  CreateTracks
+  CreateTracks,
 } from './modules/tracks'
 import {
   ChaptersShow,
@@ -36,22 +37,8 @@ function App(props: AppProps) {
       authProvider={props.authProvider}
     >
       <Resource name="users" list={ListGuesser} edit={EditGuesser} />
-      <Resource
-        name="question_choices"
-        list={ListGuesser}
-        edit={EditGuesser}
-        show={QuestionChoicesShow}
-        create={CreateQuestionChoice}
-      />
       <Resource name="books" list={ListGuesser} edit={EditGuesser} />
       <Resource name="courses" list={ListGuesser} edit={EditGuesser} />
-      <Resource
-        name="questions"
-        list={QuestionsList}
-        edit={EditGuesser}
-        create={CreateQuestions}
-        show={QuestionsShow}
-      />
       <Resource
         name="tracks"
         list={TracksList}
@@ -66,6 +53,21 @@ function App(props: AppProps) {
         create={CreateChapters}
         show={ChaptersShow}
       />
+      <Resource
+        name="questions"
+        list={QuestionsList}
+        edit={EditQuestions}
+        create={CreateQuestions}
+        show={QuestionsShow}
+      />
+      <Resource
+        name="question_choices"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={QuestionChoicesShow}
+        create={CreateQuestionChoice}
+      />
+      <Resource name="question_types" list={ListGuesser} edit={EditGuesser} />
     </Admin>
   )
 }
