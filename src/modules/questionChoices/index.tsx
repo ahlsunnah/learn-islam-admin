@@ -113,6 +113,7 @@ function QuestionQuickCreateButton({onChange}) {
             <>
               <DialogContent>
                 <TextInput source="question" />
+                <TextInput source="title" />
                 <BooleanInput source="is_active" defaultValue={true} />
                 <ReferenceInput source="course_id" reference="courses">
                   <SelectInput optionText="slug" />
@@ -194,6 +195,7 @@ const QuestionQuickPreviewButton = ({id}) => {
         >
           <TextField source="id" />
           <TextField source="question" className={classes.field} />
+          <TextField source="title" classname={classes.field} />
           <TextField source="is_active" className={classes.field} />
           <TextField source="question_type_id" className={classes.field} />
         </SimpleShowLayout>
