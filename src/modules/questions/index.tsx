@@ -59,6 +59,7 @@ const QuestionsForm = (props) => {
     <SimpleForm {...props}>
       {id && <TextInput source="id" disabled />}
       <TextInput source="question" />
+      <TextInput source="title" />
       <BooleanInput source="is_active" defaultValue={true} />
       <ReferenceInput source="course_id" reference="courses">
         <SelectInput optionText="slug" />
@@ -103,6 +104,7 @@ export const QuestionsList = (props) => {
             <TextField source="question" />
             <TextField source="is_active" />
             <TextField source="question_type_id" />
+            <TextField source="title" />
             <TextField source="course_id" />
             <ShowButton />
           </Datagrid>
@@ -118,6 +120,7 @@ export const QuestionsShow = (props) => (
       <Tab label="Question">
         <TextField source="id" />
         <TextField source="question" />
+        <TextField source="title" />
         <TextField source="is_active" />
         <ReferenceField
           label="question type"
@@ -135,9 +138,9 @@ export const QuestionsShow = (props) => (
         >
           <Datagrid>
             <TextField source="id" />
-            <BooleanField source="choice" />
+            <TextField source="choice" />
             <BooleanField source="is_right_choice" />
-            <BooleanField source="choice_order" />
+            <TextField source="choice_order" />
             <ShowButton />
             <EditButton />
           </Datagrid>
